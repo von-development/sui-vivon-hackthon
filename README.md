@@ -195,18 +195,6 @@ cd contracts
 sui move test
 ```
 
-### Frontend Tests
-```bash
-cd app
-npm run test
-```
-
-## Live Deployment
-
-**Testnet**: https://your-domain.com
-**Package ID**: `0x42418f800a71a69f701fe8daf1d0e3dc989561542827df23e88cdbaf3248a0d7`
-**Explorer**: [View on Sui Explorer](https://suiexplorer.com/object/0x42418f800a71a69f701fe8daf1d0e3dc989561542827df23e88cdbaf3248a0d7?network=testnet)
-
 ## Contributing
 
 1. Fork the repository
