@@ -1,64 +1,142 @@
-# Sui dApp Frontend Scaffold
+# VIVON Platform Frontend
 
-Your super kit to build dApp on Sui
+The frontend application for VIVON Platform - the first integrated learn-and-earn Web3 ecosystem where users master AI engineering, cybersecurity, and Web3 development while earning real VIVON tokens and NFT achievements on Sui blockchain.
 
-This project provides a frontend scaffold for a decentralized application (dApp) on the Sui blockchain. It uses next.js page router, shadcn/ui for UI library, @mysten/dapp-kit for interacting with Sui contracts, and bucket-protocol-SDK for additional blockchain interactions.
+## Overview
 
-<img width="1512" alt="image" src="https://github.com/Bucket-Protocol/sui-dapp-scaffold-v1/assets/50972884/7ba8fa56-e0e7-4f4f-a8ee-75a97688b18c">
+This Next.js application provides the user interface for the VIVON Platform, featuring:
+- Multi-category bounty system with real token rewards
+- Interactive AI-powered learning challenges
+- Sui blockchain integration for secure transactions
+- NFT achievement system
+- Comprehensive dashboard for tracking progress and earnings
 
-Powered by Bucket Protocol.
+## Tech Stack
 
-## Packages
-* [next.js](https://nextjs.org/): Utilized for the foundational framework, supporting SSR and optimized page routing.
-* [tailwind](https://tailwindcss.com/): Rapidly build modern websites without ever leaving your HTML.
-* [shadcn/ui](https://ui.shadcn.com/): Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.
-* [@mysten/dapp-kit](https://www.npmjs.com/package/@mysten/dapp-kit): Provides hooks and components for querying data from the Sui blockchain, and connecting to Sui wallets.
-* [bucket-protocol-sdk](https://github.com/Bucket-Protocol/bucket-protocol-sdk): Enhances capabilities with Sui blockchain features.
+* **[Next.js 14](https://nextjs.org/)**: React framework with App Router and optimized page routing
+* **[TypeScript](https://www.typescriptlang.org/)**: Type-safe development
+* **[Tailwind CSS](https://tailwindcss.com/)**: Utility-first CSS framework
+* **[shadcn/ui](https://ui.shadcn.com/)**: Beautifully designed, accessible React components
+* **[@mysten/dapp-kit](https://www.npmjs.com/package/@mysten/dapp-kit)**: Sui wallet integration and blockchain queries
+* **[Lucide React](https://lucide.dev/)**: Beautiful icon system
 
 ## Features
 
-* Headless, fully customizable UI component
-* Save 80% of the initial setting time. You can build your project/product way faster
+### Core Pages
+- **Dashboard**: User profile, balances, and transaction history
+- **Bounties**: Browse and participate in AI, security, DeFi, and gaming challenges
+- **Challenges**: Interactive learning quests with instant rewards
+- **AI Helpers**: Specialized AI assistants for different domains
+- **Profile**: Personal achievement tracking and NFT collection
 
-## Components
-* Basic series
-  * BasicDataField
-    ```Typescript
-    import BasicDataField from "@/components/fields/basicDataField";
-    
-    <BasicDataField
-      label="Your Wallet Balance"
-      value={userBalance ?? "0.0000"}
-      spaceWithUnit
-      unit="SUI"
-      minFractionDigits={0}
-    />
-    ```
-    <img width="165" alt="image" src="https://github.com/Bucket-Protocol/sui-dapp-scaffold-v1/assets/50972884/8a900e28-7576-43d8-9f57-1655ee96adc3">
+### Smart Contract Integration
+- **Sui Blockchain**: Native integration with Sui testnet/mainnet
+- **VIVON Token**: Real token rewards with time-locking capabilities
+- **NFT System**: Achievement badges and collectibles
+- **Bounty System**: Secure escrow and hash-based submissions
 
-  * BasicInputField
-    ```Typescript
-    import BasicInputField from "@/components/fields/basicInputField";
-    
-    <BasicInputField
-      label="Input"
-      inputValue={value}
-      setInputValue={setInputValue}
-      tokenInfo={["SUI", "BUCK", "USDC", "USDT"]}
-      canSelectToken={true}
-      selectedToken={selectedToken}
-      setSelectedToken={setSelectedToken}
-      maxValue={0.0}
-    />
-    ```
-    <img width="1202" alt="image" src="https://github.com/Bucket-Protocol/sui-dapp-scaffold-v1/assets/50972884/b6e23e4b-2369-498e-a409-9e5821ccf8d6">
-* ConnectMenu
-  ```Typescript
-  import ConnectMenu from "@/components/ui/connectMenu";
+## Key Components
 
-  <ConnectMenu walletAddress={walletAddress} suiName={suiName} />
-  ```
-  <img width="315" alt="image" src="https://github.com/Bucket-Protocol/sui-dapp-scaffold-v1/assets/50972884/e05dcae4-c163-4251-b413-e97bc226c9e9">
+### Navigation & Layout
+```typescript
+import Navigation from "@/components/navigation";
+import { DashboardContainer } from "@/components/containers/dashboardContainer";
+```
 
-* MetaTagsContainer
-  * Open graph metadata is a key point for a web app. Most common settings are gathered in this component.
+### Wallet Integration
+```typescript
+import { WalletContext } from "@/context/WalletContext";
+import { ConnectMenu } from "@/components/ui/connectMenu";
+```
+
+### Chat Interface
+```typescript
+import { ChatWindow } from "@/components/chat/ChatWindow";
+
+<ChatWindow
+  endpoint="/api/chat/sui_assistant"
+  agentIcon={<Bot className="w-5 h-5" />}
+  placeholder="Ask me about Sui development..."
+/>
+```
+
+### Form Components
+```typescript
+import { BasicInputField } from "@/components/fields/basicInputField";
+import { BasicDataField } from "@/components/fields/basicDataField";
+```
+
+## Getting Started
+
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Environment setup**:
+   ```bash
+   cp .env.example .env.local
+   # Configure your environment variables
+   ```
+
+3. **Run development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**:
+   Navigate to `http://localhost:3000`
+
+## Environment Variables
+
+```env
+NEXT_PUBLIC_SUI_NETWORK=testnet
+NEXT_PUBLIC_PACKAGE_ID=0x42418f800a71a69f701fe8daf1d0e3dc989561542827df23e88cdbaf3248a0d7
+NEXT_PUBLIC_RPC_URL=https://fullnode.testnet.sui.io
+```
+
+## Smart Contract Integration
+
+The frontend integrates with Move smart contracts deployed on Sui:
+
+- **Bounty System**: Secure escrow and submissions
+- **VIVON Token**: Native token with time-locking
+- **NFT Achievements**: On-chain skill verification
+- **Oracle Integration**: Automated reward verification
+
+## Development
+
+### File Structure
+```
+src/
+├── components/          # Reusable UI components
+│   ├── chat/           # Chat interface components
+│   ├── fields/         # Form and data display components
+│   └── ui/             # Base UI components
+├── context/            # React context providers
+├── hooks/              # Custom React hooks
+├── pages/              # Next.js pages
+├── services/           # Blockchain service layer
+├── constants/          # Configuration constants
+└── styles/             # Global styles
+```
+
+### Key Services
+- **SuiService**: Blockchain interactions
+- **DexService**: Token swapping functionality
+- **Oracle**: Price feeds and verification
+
+## Deployment
+
+The application is configured for deployment on Vercel with automatic builds from the main branch.
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+MIT License - see LICENSE file for details
