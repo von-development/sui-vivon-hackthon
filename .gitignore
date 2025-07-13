@@ -339,3 +339,6 @@ docker-compose.override.yml
 # Generated documentation
 docs/build/
 docs/dist/
+
+# Ignore entire docs folder
+docs/
