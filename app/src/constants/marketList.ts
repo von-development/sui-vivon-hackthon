@@ -27,7 +27,7 @@ export const TOKEN_LIST: {
   VIVON: {
     token: "VIVON",
     symbol: "VIVON",
-    iconPath: "/images/coins/vivon-icon.svg",
+    iconPath: "/images/coins/vivon-token.png",
   },
 };
 
