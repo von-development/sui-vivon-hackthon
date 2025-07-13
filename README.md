@@ -153,8 +153,8 @@ public struct VivonNFT has key, store {
 ### Frontend Development
 ```bash
 cd app
-npm install
-npm run dev
+yarn install
+yarn dev
 ```
 
 ### Smart Contract Development
@@ -164,14 +164,8 @@ sui move build
 sui move test
 ```
 
-### Deployment
-```bash
-# Deploy contracts to testnet
-sui client publish --gas-budget 100000000
 
-# Update package constants
-# Edit app/src/constants/networkList.ts with new package ID
-```
+
 
 ## Sui Architecture Benefits
 
@@ -202,7 +196,3 @@ sui move test
 3. Make your changes
 4. Run tests
 5. Submit a pull request
-
-## License
-
-MIT License - see LICENSE file for details
